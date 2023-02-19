@@ -1,6 +1,6 @@
 ## Geofencing with Tile38
 
-This service an example of geofencing detect with notification## Running locally
+This service an example of geofencing detect with notification
 
 ### Running
 
@@ -11,3 +11,5 @@ docker-compose up
 ```
 
 ### Design
+<img src="https://github.com/aliaydins/geofencing-api/blob/master/_img/tile38.png"></img>
+
