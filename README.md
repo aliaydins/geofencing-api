@@ -20,4 +20,10 @@ curl -X GET http://localhost:8081/health
 curl -X GET http://localhost:8082/health
 ```
 
+List all events 
+```
+curl -X GET http://localhost:8082/
+```
+
+
 DEMO: [medium](https://medium.com/@ali.aydinn/tile38-ile-geofencing-bf9494a736f3) 
