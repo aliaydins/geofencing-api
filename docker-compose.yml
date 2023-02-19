@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: dbadmin
+      POSTGRES_PASSWORD: dbadmin
+
+  geofence:
+    build: ./geofence/
+    container_name: geofence-service
+    ports:
+      - 8081:8081
+    environment:
+      PORT: 8081
+      CORS_ALLOWED_ORIGINS: '*'
+      NOTIFICATION_URL: http://notification:8082/event
+      TILE38_HOST: http://tile38
+      TILE38_PORT: 9851
+      CITY: istanbul
+    depends_on:
+      - postgres
+
+  notification:
+    build: ./notification/
+    container_name: notification-service
+    ports:
+      - 8082:8082
+    environment:
+      PORT: 8082
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: 'postgres'
+      DB_SCHEMA: 'public'
+      DB_USER: dbadmin
+      DB_USER_PASSWORD: dbadmin
+    depends_on:
+      - postgres
+
+  tile38:
+    image: tile38/tile38
+    container_name: tile38
+    restart: always
+    ports:
+      - '9851:9851'
