@@ -1,6 +1,6 @@
 ## Geofencing with Tile38
 
-This service an example of geofencing detect with notification
+An example of geofencing with tile38
 
 
 ### Design
